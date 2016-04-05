@@ -1,0 +1,1 @@
+# ElasticSearch Curator docker image

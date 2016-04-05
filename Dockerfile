@@ -9,5 +9,7 @@ RUN pip install elasticsearch-curator
 VOLUME /data
 WORKDIR /data
 
+USER curator
+
 # COPY run.sh /run.sh
 # CMD /run.sh

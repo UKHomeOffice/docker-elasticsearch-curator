@@ -1,15 +1,13 @@
-FROM quay.io/ukhomeofficedigital/centos-base:v0.2.0
+FROM alpine:3.4
 
-RUN yum install -q -y http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm && yum upgrade -y -q; yum clean all
-RUN yum install -q -y python-pip; yum clean all
-RUN adduser -d /data -m curator
+RUN apk upgrade --no-cache
+RUN apk add --no-cache python3 bash
+RUN adduser -h /data -D curator
 
-RUN pip install elasticsearch-curator
-
-VOLUME /data
-WORKDIR /data
+RUN pip3 install elasticsearch-curator==4.0.1
 
 USER curator
 
-# COPY run.sh /run.sh
-# CMD /run.sh
+COPY run.sh /run.sh
+
+ENTRYPOINT ["/run.sh"]

@@ -4,7 +4,7 @@ RUN apk upgrade --no-cache
 RUN apk add --no-cache python3 bash
 RUN adduser -h /data -D -u 1000 curator
 
-RUN pip3 install elasticsearch-curator==5.1.1
+RUN pip3 install elasticsearch-curator
 
 USER 1000
 
